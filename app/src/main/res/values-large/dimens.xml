@@ -1,0 +1,36 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_margin_extrathin">4dp</dimen>
+    <dimen name="activity_margin_thin">8dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="activity_margin_wide">32dp</dimen>
+    <dimen name="activity_margin_extrawide">64dp</dimen>
+
+    <dimen name="welocome_title">36sp</dimen>
+    <dimen name="welcome_subtitle">18sp</dimen>
+    <dimen name="welcome_icon">100dp</dimen>
+    <dimen name="welcome_dots_height">30dp</dimen>
+    <dimen name="welcome_dots_margin_bottom">20dp</dimen>
+
+    <dimen name="card_label_width">8dp</dimen>
+
+    <dimen name="drawer_header_left_padding">16dp</dimen>
+    <dimen name="drawer_header_height">224dp</dimen>
+    <dimen name="drawer_picture_size">96dp</dimen>
+
+    <dimen name="bottombar_height">64dp</dimen>
+
+    <dimen name="all_cardview_border">3dp</dimen>
+
+    <dimen name="course_picture_size">64dp</dimen>
+    <dimen name="course_title_size">18sp</dimen>
+    <dimen name="course_description_size">16sp</dimen>
+    <dimen name="box_icon_size">18dp</dimen>
+
+    <dimen name="history_cover_height">200dp</dimen>
+    <dimen name="history_student_picture">160dp</dimen>
+
+    <dimen name="empty_icon">200dp</dimen>
+    <dimen name="empty_text_size">24sp</dimen>
+
+</resources>

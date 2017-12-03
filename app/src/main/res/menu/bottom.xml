@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_pending"
+        android:title="@string/title_pending"
+        android:icon="@drawable/ic_pending" />
+
+    <item
+        android:id="@+id/menu_attending"
+        android:title="@string/title_attending"
+        android:icon="@drawable/ic_attending" />
+
+    <item
+        android:id="@+id/menu_closed"
+        android:title="@string/title_closed"
+        android:icon="@drawable/ic_closed" />
+
+</menu>

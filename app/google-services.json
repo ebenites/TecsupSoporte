@@ -1,0 +1,180 @@
+{
+  "project_info": {
+    "project_number": "330029375263",
+    "firebase_url": "https://tecsup-d3b0c.firebaseio.com",
+    "project_id": "tecsup-d3b0c",
+    "storage_bucket": "tecsup-d3b0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330029375263:android:4af2336ed6f5f198",
+        "android_client_info": {
+          "package_name": "pe.edu.tecsup.campus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330029375263-esbv3sh81qdibc6vv4egl8gleqe4ai2d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.edu.tecsup.campus",
+            "certificate_hash": "828072631a6c84fc4c69fe7e67a13393b3b4e1cd"
+          }
+        },
+        {
+          "client_id": "330029375263-trdmuetk08m3o58fkvf24psq3q8f5s0t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.edu.tecsup.campus",
+            "certificate_hash": "6867f23d7bb6e88d3ddd714754d697ec04cb360f"
+          }
+        },
+        {
+          "client_id": "330029375263-g6vjil04nlhk162p625955ule9j1pjpq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.edu.tecsup.campus",
+            "certificate_hash": "dfd2d472f9dede16d710c865070c74a70b706823"
+          }
+        },
+        {
+          "client_id": "330029375263-9f8fr4fpddctic3ogqn7hkhoaq0vqbi7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKLfDdOUjcUtcm7OIOBxR6yQ9UaTseUmQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330029375263-9f8fr4fpddctic3ogqn7hkhoaq0vqbi7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "330029375263-ikugta64gm4hfkp84sq5k0ragv379k0l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pe.edu.tecsup.app"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330029375263:android:c7336428ebd60da7",
+        "android_client_info": {
+          "package_name": "pe.edu.tecsup.appdocentes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330029375263-6u35irpnd56oub2sll26ct4la8joivci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.edu.tecsup.appdocentes",
+            "certificate_hash": "dfd2d472f9dede16d710c865070c74a70b706823"
+          }
+        },
+        {
+          "client_id": "330029375263-9f8fr4fpddctic3ogqn7hkhoaq0vqbi7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKLfDdOUjcUtcm7OIOBxR6yQ9UaTseUmQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330029375263-9f8fr4fpddctic3ogqn7hkhoaq0vqbi7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "330029375263-ikugta64gm4hfkp84sq5k0ragv379k0l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pe.edu.tecsup.app"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330029375263:android:a60c1ce0d3d81aff",
+        "android_client_info": {
+          "package_name": "pe.edu.tecsup.appsoporte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330029375263-aolh4nnnnrqvpi117m0bfi069ajlmkq7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pe.edu.tecsup.appsoporte",
+            "certificate_hash": "dfd2d472f9dede16d710c865070c74a70b706823"
+          }
+        },
+        {
+          "client_id": "330029375263-9f8fr4fpddctic3ogqn7hkhoaq0vqbi7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKLfDdOUjcUtcm7OIOBxR6yQ9UaTseUmQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330029375263-9f8fr4fpddctic3ogqn7hkhoaq0vqbi7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "330029375263-ikugta64gm4hfkp84sq5k0ragv379k0l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pe.edu.tecsup.app"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
