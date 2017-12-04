@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -171,6 +172,7 @@ public class IncidentRVAdapter extends Adapter<IncidentRVAdapter.ViewHolder> {
 
                                 // Got to IncidentFragment with INCIDENT_STATUS_ATENTION
                                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_content, IncidentFragment.newInstance(Constants.INCIDENT_STATUS_ATENTION)).commit();
+                                ((BottomNavigationView)activity.findViewById(R.id.bottom_navigation)).setSelectedItemId(R.id.menu_attending);
 
                                 Toast.makeText(activity, "¡Haz tomado el ticket!", Toast.LENGTH_LONG).show();
 
