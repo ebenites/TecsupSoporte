@@ -20,9 +20,9 @@
             android:id="@+id/shimmer_view_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:auto_start="true"
-            app:repeat_delay="500"
-            app:base_alpha=".6">
+            app:shimmer_auto_start="true"
+            app:shimmer_repeat_delay="500"
+            app:shimmer_base_alpha=".6">
 
             <ImageView
                 android:layout_width="match_parent"

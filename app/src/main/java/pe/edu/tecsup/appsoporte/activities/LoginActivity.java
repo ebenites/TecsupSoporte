@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,7 +29,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.crash.FirebaseCrash;
 import com.orm.SugarRecord;
 
 import pe.edu.tecsup.appsoporte.R;
@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     }, 2000);
                 }
                 i++;
-                if(i == 3){
+                if(i == 5){
                     if(findViewById(R.id.codigo).getVisibility() != View.VISIBLE) {
                         findViewById(R.id.codigo).setVisibility(View.VISIBLE);
                         Toast.makeText(LoginActivity.this, "GOD MODE ACTIVATED", Toast.LENGTH_LONG).show();
@@ -263,7 +263,7 @@ public class LoginActivity extends AppCompatActivity {
                                 showProgress(false);
                                 Log.e(TAG, "onFailure: " + t.getMessage(), t);
                                 Toast.makeText(getApplication(), t.getMessage(), Toast.LENGTH_LONG).show();
-                                FirebaseCrash.report(t);
+                                Crashlytics.logException(t);
                             } catch (Throwable x) {}
                         }
 
@@ -281,7 +281,7 @@ public class LoginActivity extends AppCompatActivity {
                 showProgress(false);
                 Log.e(TAG, "onThrowable: " + t.getMessage(), t);
                 if(getApplication()!=null) Toast.makeText(getApplication(), t.getMessage(), Toast.LENGTH_LONG).show();
-                FirebaseCrash.report(t);
+                Crashlytics.logException(t);
             } catch (Throwable x) {}
         }
 

@@ -1,6 +1,7 @@
 package pe.edu.tecsup.appsoporte.services;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ContentResolver;
@@ -9,10 +10,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -31,6 +34,18 @@ import pe.edu.tecsup.appsoporte.util.PreferencesManager;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = MyFirebaseMessagingService.class.getSimpleName();
+
+    @Override
+    public void onNewToken(String s) {
+        super.onNewToken(s);
+        Log.e(TAG, "onNewToken: " + s);
+
+        // Saving gcm token to shared preferences
+        PreferencesManager.getInstance(this).set(PreferencesManager.PREF_TOKEN_GCM, s);
+
+        // Suscribe to topics
+        FirebaseMessaging.getInstance().subscribeToTopic(Constants.FIREBASE_TOPIC_SUPPORTS);
+    }
 
     public static int NOTIFICATION_ID = 0;
 
@@ -65,7 +80,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 String color = remoteMessage.getNotification().getColor();
 
                 // Notification Builder
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
 
                 // Icon
                 int iconId = (icon == null)? R.drawable.in_logo:this.getResources().getIdentifier(icon, "drawable", this.getPackageName());
@@ -108,8 +123,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         .build();
 
                 // Notification manager
-                NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-                notificationManager.notify(NOTIFICATION_ID++, notification);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    // NotificationChannel en Android 8: https://developer.android.com/training/notify-user/channels
+                    NotificationChannel channel = new NotificationChannel("default", "Tecsup", NotificationManager.IMPORTANCE_DEFAULT);
+                    channel.setDescription("Tecsup notification");
+
+                    NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                    notificationManager.createNotificationChannel(channel);
+                    notificationManager.notify(NOTIFICATION_ID++, notification);
+                }else{
+                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(NOTIFICATION_ID++, notification);
+                }
 
                 // Play sound
                 RingtoneManager.getRingtone(this, soundUri).play();

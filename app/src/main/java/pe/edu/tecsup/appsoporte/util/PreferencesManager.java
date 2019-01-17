@@ -25,6 +25,8 @@ public class PreferencesManager {
      */
     public static final String PREF_EMAIL = "email";
 
+    public static final String PREF_SEDE = "sede";
+
     public static final String PREF_ISLOGGED = "islogged";
 
     public static final String PREF_TOKEN = "token";

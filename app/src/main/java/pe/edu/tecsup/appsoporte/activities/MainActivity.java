@@ -22,12 +22,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.crashlytics.android.Crashlytics;
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.orm.SugarRecord;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import pe.edu.tecsup.appsoporte.BuildConfig;
 import pe.edu.tecsup.appsoporte.R;
 import pe.edu.tecsup.appsoporte.fragments.IncidentFragment;
 import pe.edu.tecsup.appsoporte.fragments.SettingsFragment;
@@ -65,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         PreferencesManager.getInstance(this);
 
         // Setear Toolbar como action bar
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         User user = SugarRecord.last(User.class);
@@ -85,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
                 bitmap = Bitmap.createBitmap(bitmap, x, y, minSize, minSize);
 
-                bitmap = Bitmap.createScaledBitmap(bitmap, 120, 120, false);
+                bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, false);
 
                 //BitmapDrawable drawable = new BitmapDrawable(getResources(), bitmap);
                 RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
@@ -107,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // BottomNavigation
-        BottomNavigationView bottomNavigationView  = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView  = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -130,6 +138,23 @@ public class MainActivity extends AppCompatActivity {
         // Styling progress bar
         ((ProgressBar)findViewById(R.id.main_progress)).getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this, R.color.gold), PorterDuff.Mode.SRC_ATOP);
 
+        // Set UserIdentifier to Crashlytics
+        Crashlytics.setUserIdentifier(PreferencesManager.getInstance(this).get(PreferencesManager.PREF_EMAIL));
+
+        // Update instance id
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                Log.d(TAG, "INSTANCEID: " + instanceIdResult.getToken());
+                PreferencesManager.getInstance(MainActivity.this).set(PreferencesManager.PREF_TOKEN_GCM, instanceIdResult.getToken());
+            }
+        });
+
+        // FirebaseAnalytics
+        FirebaseAnalytics.getInstance(this).setUserId(PreferencesManager.getInstance().get(PreferencesManager.PREF_EMAIL));
+        FirebaseAnalytics.getInstance(this).setUserProperty(PreferencesManager.PREF_EMAIL, PreferencesManager.getInstance().get(PreferencesManager.PREF_EMAIL));
+        FirebaseAnalytics.getInstance(this).setUserProperty(PreferencesManager.PREF_SEDE, user.getSede());
+
         // Fragment inicial (Home)
         if (savedInstanceState == null) {
             showPendingFragment();
@@ -137,6 +162,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Go From Notification
         onNewIntent(this.getIntent());
+
+        // Check AutoUpdate
+        new AppUpdater(this)
+                .setUpdateFrom(UpdateFrom.JSON)
+                .setUpdateJSON(TecsupServiceGenerator.API_BASE_URL + "/api/version/" + BuildConfig.APPLICATION_ID)
+                .setButtonDoNotShowAgain(null)
+//                .setCancelable(false)
+                .start();
 
     }
 

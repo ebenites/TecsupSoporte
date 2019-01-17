@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.firebase.crash.FirebaseCrash;
+import com.crashlytics.android.Crashlytics;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -33,9 +33,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public final class TecsupServiceGenerator {
 
-//    public static final String API_BASE_URL = "https://tecsup-api-ebenites.c9users.io";
-//    public static final String API_BASE_URL = "http://campus.tecsup.edu.pe/tecsup-api/";
-    public static final String API_BASE_URL = "http://api.tecsup.edu.pe/tecsup-api/";
+//    public static final String API_BASE_URL = "https://apidev.tecsup.edu.pe/tecsup-api/";
+//    public static final String API_BASE_URL = "https://qas.tecsup.edu.pe/tecsup-api/";
+    public static final String API_BASE_URL = "https://api.tecsup.edu.pe/tecsup-api/";
 //    public static final String API_BASE_URL = "http://10.0.2.2:8080/";
 
     public static final String PHOTO_URL = API_BASE_URL + "/api/user/picture/";
@@ -137,7 +137,7 @@ public final class TecsupServiceGenerator {
 
                     }catch (Exception e){
                         Log.e(TAG, e.toString());
-                        FirebaseCrash.report(e);
+                        Crashlytics.logException(e);
                         throw e;
                     }
 
